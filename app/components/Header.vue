@@ -24,19 +24,29 @@
   </header>
 </template>
 
+
+<style scoped>
+
+html, body {
+  font-family: 'Inter', sans-serif;
+}
+
+</style>
+
+
 <style scoped>
 .header {
   background-color: #e8dfcc;
   height: 60px;
   border-bottom: 1px solid #ddd;
+
 }
 
 .header-container {
   max-width: 1200px;
   height: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 30px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,6 +55,7 @@
 .logo img {
   width: 80px;
   height: 80px;
+  margin-top: 10px;
   object-fit: contain;
 }
 
@@ -65,7 +76,7 @@
 }
 
 .vote-btn {
-  background-color: #c9982b;
+  background-color: #7e2527;
   color: white;
   border: none;
   padding: 8px 20px;

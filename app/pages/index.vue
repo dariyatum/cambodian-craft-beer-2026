@@ -7,7 +7,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+ <Header />
   <div class="home-page">
+
+
 
 <div class="passport-banner">
     <span>🍺 Brewery Passport</span>
@@ -103,6 +106,7 @@
 <style scoped>
 html, body {
   font-family: 'Inter', sans-serif;
+
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -119,7 +123,7 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-
+  margin: 0%;
     min-height: 100vh;
 }
 .home-page {
