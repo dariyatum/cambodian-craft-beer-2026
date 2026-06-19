@@ -6,6 +6,11 @@
         <img src="/1.logo-removebg-preview.png" alt="Logo">
       </div>
 
+      <div class="logo1">
+        <img src="" alt="Logo">
+
+      </div>
+
       <nav class="nav-menu">
         <NuxtLink to="/">Home</NuxtLink>
         <NuxtLink to="/brewery">Brewery</NuxtLink>
@@ -17,7 +22,7 @@
 
 
       <button class="vote-btn">
-        Vote
+        Judge Here
       </button>
 
     </div>
@@ -29,6 +34,8 @@
 
 html, body {
   font-family: 'Inter', sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 
 </style>
@@ -43,13 +50,13 @@ html, body {
 }
 
 .header-container {
-  max-width: 1200px;
   height: 100%;
   margin: 0;
   padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .logo img {
@@ -59,6 +66,12 @@ html, body {
   object-fit: contain;
 }
 
+.logo1 img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  object-fit: contain;
+}
 .nav-menu {
   display: flex;
   gap: 60px;
