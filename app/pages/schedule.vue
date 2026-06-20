@@ -7,6 +7,7 @@
   <section class="hero">
     <div class="image"><img src="/images/bg-schedule.jpg" alt=""></div>
 
+
     <div class="content">
       <span class="title">Craft beer</span>
       <h2>Even Schedule</h2>
@@ -36,10 +37,37 @@
           title="DJ Wha-Wah"
           time="3:30 PM"
         />
-      </div>
 
+             <EventScheduleItem
+          icon="fa-solid fa-award"
+          title="Blind tasting live session"
+          time="6:40 PM"
+        />
+
+             <EventScheduleItem
+          icon="fa-solid fa-award"
+          title="Start award ceremony"
+          time="7:30 PM"
+        />
+
+          <EventScheduleItem
+          icon="fa-solid fa-music"
+          title="Live music by The Broken Cymbal"
+          time="8:30 PM"
+        />
+
+             <EventScheduleItem
+          icon="fa-solid fa-business-time"
+          title="Even Ends"
+          time="11:30 PM"
+        />
+
+
+      </div>
+      
     </div>
   </section>
+
 
 </template>
 
@@ -84,6 +112,8 @@ body{
   max-width: 1200px;
   margin: 100px auto;
   padding: 0 20px;
+  align-items: center;
+  
 }
 
 .image{
@@ -108,8 +138,14 @@ body{
 }
 
 .content h2 {
+
   font-size: 2rem;
   color: #222;
+
+    font-size: 3rem;
+    margin: 15px 0;
+    color: #222;
+
 }
 
 .content p{
@@ -131,5 +167,24 @@ body{
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+
+@media (max-width: 768px ) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    margin: auto 50px;
+  }
+
+  @media (max-width: 768px) {
+    .schedule-list {
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+      margin: 50px auto;
+    }
+  }
 }
 </style>
