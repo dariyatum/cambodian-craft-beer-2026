@@ -177,14 +177,27 @@ body{
     gap: 30px;
     margin: auto 50px;
   }
+}
+  @media (max-width: 480px) {
+  .hero {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
 
-  @media (max-width: 768px) {
-    .schedule-list {
-      flex-direction: column;
-      text-align: center;
-      gap: 30px;
-      margin: 50px auto;
-    }
+  .image img {
+    border-radius: 15px;
+  }
+
+  .content h2 {
+    font-size: 1.7rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  .schedule-list {
+    gap: 1rem;
   }
 }
 </style>
