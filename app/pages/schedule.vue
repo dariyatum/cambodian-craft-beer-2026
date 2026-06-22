@@ -10,7 +10,7 @@
 
     <div class="content">
       <span class="title">Craft beer</span>
-      <h2>Even Schedule</h2>
+      <h2>Event Schedule</h2>
       <p>Join us for unforgettable beer experiences, brewery tours, tasting sessions, seasonal celebrations, and community gatherings. Whether you're a craft beer enthusiast or just beginning your journey, our events offer the perfect opportunity to explore unique flavors, meet fellow beer lovers, and create memorable moments.</p>
     </div>
   </section>
