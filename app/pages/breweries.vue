@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <h1 class="title">
+    <h1 class="title"> 
         Meet The Brewers
     </h1>
 
