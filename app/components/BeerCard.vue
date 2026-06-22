@@ -128,4 +128,4 @@ const filteredBeers = computed(() => {
   color: #f0e3cf;
   margin-top: 24px;
 }
-</style>
+</style> 
