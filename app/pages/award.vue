@@ -2,6 +2,8 @@
   <Header />
   <div class="competition-wrapper">
     <div class="main-content">
+      
+      <!-- Section Header -->
       <div class="section-title-block">
         <h1 class="main-title">
           Competition Awards
@@ -11,8 +13,10 @@
         </p>
       </div>
 
+      <!-- Grid Container -->
       <div class="awards-grid">
         
+        <!-- Main Award Card -->
         <div class="award-card">
           <div class="icon-container">
             <svg class="award-svg" fill="currentColor" viewBox="0 0 24 24">
@@ -44,6 +48,7 @@
           </div>
         </div>
 
+        <!-- People's Choice Card -->
         <div class="award-card">
           <div class="icon-container">
             <svg class="award-svg" fill="currentColor" viewBox="0 0 24 24">
@@ -58,17 +63,11 @@
           <p class="card-description description-fixed-width">
             This is the award judged by you – all our guests. To judge, please use the judging form on this website and submit one judging per beer.
           </p>
-
-          <div class="medal-tier-box layout-spacer"></div>
-        </div>
-
-
           
           <div class="medal-tier-box layout-spacer"></div>
         </div>
 
-      
-
+        <!-- Brewer's Choice Card -->
         <div class="award-card">
           <div class="icon-container">
             <svg class="award-svg" fill="currentColor" viewBox="0 0 24 24">
@@ -89,7 +88,6 @@
 
       </div>
     </div>
-
 
     <footer class="footer">
       © CBAC — Cambodian Craft Beer Association • Event: 16 August 2025 • Botanico Craft Beer Garden
@@ -145,37 +143,12 @@
   margin: 0;
 }
 
-
-/* 1. Base style (Mobile First: Default is 1 column) */
-.awards-grid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr)); /* 1 column on mobile */
-
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 24px;
   margin-bottom: 48px;
 }
-
-
-/* 2. Desktop/Tablet override (Triggers only on screens wider than 768px) */
-@media (min-width: 768px) {
-  .awards-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns on desktop */
-  }
-}
-
-/* 3. Mobile adjustments (Screens smaller than 768px) */
-@media (max-width: 767px) {
-  .layout-spacer {
-    display: none; /* Hides the dead space spacers on mobile layout */
-  }
-  .main-title {
-    font-size: 24px; 
-  }
-}
-
 
 .award-card {
   background-color: #F5EDE0;
@@ -239,7 +212,6 @@
   width: 100%;
 }
 
-
 .layout-spacer {
   height: 49px; 
 }
@@ -276,15 +248,6 @@
 
 @media (min-width: 768px) {
   .awards-grid {
-
-    grid-template-cols: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .layout-spacer {
-    display: none; 
-
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -293,7 +256,6 @@
 @media (max-width: 767px) {
   .layout-spacer {
     display: none;
-
   }
   .main-title {
     font-size: 24px; 
