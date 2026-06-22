@@ -6,8 +6,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
- <Header />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
   <div class="home-page">
 
 
@@ -106,7 +105,6 @@
 <style scoped>
 html, body {
   font-family: 'Inter', sans-serif;
-
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -123,13 +121,12 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-  margin: 0%;
+    margin: 0%;
     min-height: 100vh;
 }
 .home-page {
   min-height: 100vh;
-
-  padding: 24px;
+  padding: 10px 100px;
   font-family: 'Inter', sans-serif;
 }
 /* Navbar */
@@ -227,24 +224,21 @@ body{
   color:#ffffff;
 }
 .hero-content h1{
-  font-size:2.6rem;
+  font-size:35px;
   font-weight:900;
-
   color:#3B2417;
-
   line-height:1.1;
-
   text-transform:uppercase;
   letter-spacing:3px;
-
   margin-bottom:16px;
+  margin: 0;
 }
 
 .hero-content p {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.5;
   color: #2d1a10;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
 .judge-btn{
@@ -407,7 +401,7 @@ body{
 @media(min-width:768px){
 
 .hero-content h1{
-  font-size:4rem;
+  font-size:50px;
 }
 
 }
@@ -447,6 +441,106 @@ body{
 .rule{
   flex:1;
 }
+
+}
+/* ===========================
+   Mobile Responsive
+   =========================== */
+
+@media (max-width: 768px) {
+
+  .home-page {
+    padding: 20px;
+  }
+
+  /* Hero */
+
+  .hero-card {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+.hero-image img{
+    width:180px;
+    max-width:100%;
+    height:auto;
+}
+
+  .judge-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  /* Passport Banner */
+
+  .passport-banner {
+    padding: 16px;
+  }
+
+  .passport-banner span {
+    font-size: 1.2rem;
+  }
+
+  .passport-banner p {
+    font-size: 14px;
+  }
+
+  /* Welcome */
+
+  .welcome-card {
+    padding: 20px;
+  }
+
+  .welcome-card h2 {
+    font-size: 26px;
+  }
+
+  .welcome-card p {
+    font-size: 16px;
+  }
+
+  /* Rules */
+
+  .rules-section {
+    padding: 24px;
+    display: block;
+  }
+
+  .rules-section h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .rule {
+    margin-bottom: 30px;
+  }
+
+  .rule h3 {
+    font-size: 18px;
+  }
+
+  .rule p {
+    font-size: 15px;
+  }
+
+  .arrow {
+    display: block;
+    font-size: 36px;
+  }
 
 }
 </style>
