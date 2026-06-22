@@ -1,6 +1,6 @@
 <template>
   <div class="brewery-card">
-    <div class="logo">
+    <div class="b-logo">
       <img :src="logo" :alt="name">
     </div>
 
@@ -46,14 +46,14 @@ defineProps({
     flex-direction:column;
 }
 
-.logo{
+.b-logo{
     height:130px;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-.logo img{
+.b-logo img{
     width:100px;
     height:100px;
     object-fit:contain;
