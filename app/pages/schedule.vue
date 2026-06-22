@@ -58,7 +58,7 @@
 
              <EventScheduleItem
           icon="fa-solid fa-business-time"
-          title="Even Ends"
+          title="Event Ends"
           time="11:30 PM"
         />
 
@@ -78,24 +78,9 @@
 html, body {
   font-family: 'Inter', sans-serif;
 }
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body{
-    background:
-        linear-gradient(
-            rgba(136, 87, 65, 0.88),
-            rgba(255, 212, 193, 0.88)
-        ),
-        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b');
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 
-    min-height: 100vh;
-}
+
 
 * {
   margin: 0;
