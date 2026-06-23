@@ -1,203 +1,139 @@
 <template>
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <section class="hero">
-    <div class="image"><img src="/images/bg-schedule.jpg" alt=""></div>
+  <div class="schedule-page">
 
-
-    <div class="content">
-      <span class="title">Craft beer</span>
-      <h2>Event Schedule</h2>
-      <p>Join us for unforgettable beer experiences, brewery tours, tasting sessions, seasonal celebrations, and community gatherings. Whether you're a craft beer enthusiast or just beginning your journey, our events offer the perfect opportunity to explore unique flavors, meet fellow beer lovers, and create memorable moments.</p>
-    </div>
-  </section>
-
-    <section class="schedule-section">
-    <div class="container">
-
-
-      <div class="schedule-list">
-        <EventScheduleItem
-          icon="fa-regular fa-clock"
-          title="Event Begins"
-          time="2:00 PM"
-        />
-
-        <EventScheduleItem
-          icon="fa-solid fa-users"
-          title="Introduction by the MC"
-          time="3:15 PM"
-        />
-
-        <EventScheduleItem
-          icon="fa-solid fa-music"
-          title="DJ Wha-Wah"
-          time="3:30 PM"
-        />
-
-             <EventScheduleItem
-          icon="fa-solid fa-award"
-          title="Blind tasting live session"
-          time="6:40 PM"
-        />
-
-             <EventScheduleItem
-          icon="fa-solid fa-award"
-          title="Start award ceremony"
-          time="7:30 PM"
-        />
-
-          <EventScheduleItem
-          icon="fa-solid fa-music"
-          title="Live music by The Broken Cymbal"
-          time="8:30 PM"
-        />
-
-             <EventScheduleItem
-          icon="fa-solid fa-business-time"
-          title="Even Ends"
-          time="11:30 PM"
-        />
-
-
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__image">
+        <img src="/images/bg-beer.jpg" alt="Event schedule" />
       </div>
-      
-    </div>
-  </section>
+      <div class="hero__content">
+        <p class="eyebrow">❦ Craft Beer ❦</p>
+        <h1 class="hero__title">Event Schedule</h1>
+        <p class="hero__body">
+          Join us for unforgettable beer experiences, brewery tours, tasting sessions, and community gatherings.
+          Whether you're a craft beer enthusiast or just beginning your journey, our events offer the perfect
+          opportunity to explore unique flavors and create memorable moments.
+        </p>
+      </div>
+    </section>
 
+    <!-- Schedule -->
+    <section class="schedule-section">
+      <div class="schedule-list">
+        <EventScheduleItem icon="fa-regular fa-clock"        title="Event Begins"                      time="2:00 PM"  />
+        <EventScheduleItem icon="fa-solid fa-users"          title="Introduction by the MC"            time="3:15 PM"  />
+        <EventScheduleItem icon="fa-solid fa-music"          title="DJ Wha-Wah"                        time="3:30 PM"  />
+        <EventScheduleItem icon="fa-solid fa-award"          title="Blind Tasting Live Session"        time="6:40 PM"  />
+        <EventScheduleItem icon="fa-solid fa-award"          title="Award Ceremony Begins"             time="7:30 PM"  />
+        <EventScheduleItem icon="fa-solid fa-music"          title="Live Music — The Broken Cymbal"    time="8:30 PM"  />
+        <EventScheduleItem icon="fa-solid fa-business-time"  title="Event Ends"                        time="11:30 PM" />
+      </div>
+    </section>
 
+  </div>
 </template>
 
-
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-html, body {
-  font-family: 'Inter', sans-serif;
-}
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body{
-    background:
-        linear-gradient(
-            rgba(136, 87, 65, 0.88),
-            rgba(255, 212, 193, 0.88)
-        ),
-        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b');
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    min-height: 100vh;
-}
-
-* {
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-  
 }
 
+.schedule-page {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  padding: 64px 24px 80px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ── Hero ── */
 .hero {
   display: flex;
   align-items: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 100px auto;
-  padding: 0 20px;
-  align-items: center;
-  
+  gap: 56px;
+  margin-bottom: 64px;
 }
 
-.image{
+.hero__image {
   flex: 1;
+  min-width: 0;
 }
 
-.image img{
+.hero__image img {
   width: 100%;
-  border-radius: 20px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
   display: block;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-.content {
+.hero__content {
   flex: 1;
+  min-width: 0;
 }
 
-.title {
-  color: #d4a017;
-  font-weight: 600;
-  letter-spacing: 2px;
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c89b3c;
+  margin-bottom: 12px;
 }
 
-.content h2 {
-
-  font-size: 2rem;
-  color: #222;
-
-    font-size: 3rem;
-    margin: 15px 0;
-    color: #222;
-
+.hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #f8e7c1;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1;
+  margin-bottom: 20px;
 }
 
-.content p{
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 30px;
+.hero__body {
+  font-size: 1rem;
+  color: rgba(248, 231, 193, 0.75);
+  line-height: 1.75;
 }
 
-.container {
-   width: 100%;
-   max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: block;
+/* ── Schedule ── */
+.schedule-section {
+  max-width: 680px;
+  margin: 0 auto;
 }
-
 
 .schedule-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 14px;
 }
 
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .schedule-page {
+    padding: 48px 16px 64px;
+  }
 
-@media (max-width: 768px ) {
   .hero {
     flex-direction: column;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .hero__image img {
+    border-radius: 12px;
+    max-height: 260px;
+  }
+
+  .hero__content {
     text-align: center;
-    gap: 30px;
-    margin: auto 50px;
-  }
-}
-  @media (max-width: 480px) {
-  .hero {
-    padding: 0 15px;
-    margin: 30px auto;
-  }
-
-  .image img {
-    border-radius: 15px;
-  }
-
-  .content h2 {
-    font-size: 1.7rem;
-  }
-
-  .content p {
-    font-size: 0.9rem;
-  }
-
-  .schedule-list {
-    gap: 1rem;
   }
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <Header />
 
   <div class="award-page">
     <div class="award-page__hero">
