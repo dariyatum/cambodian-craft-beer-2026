@@ -27,42 +27,50 @@
     </section>
 
     <section class="rules-section">
-      <h2>How It Works</h2>
-      <div class="rules-grid">
+  <h2>How It Works</h2>
+  <div class="rules-grid">
 
-        <div class="rule">
-          <div class="step-number">1</div>
-          <div class="icon-box">
-            <i class="fa-solid fa-beer-mug-empty"></i>
-          </div>
-          <h3>Taste</h3>
-          <p>Taste each beer carefully.</p>
-        </div>
-
-        <div class="rule-divider">⌄</div>
-
-        <div class="rule">
-          <div class="step-number">2</div>
-          <div class="icon-box">
-            <i class="fa-solid fa-wine-glass"></i>
-          </div>
-          <h3>Evaluate</h3>
-          <p>Consider aroma, flavor, balance, and overall impression.</p>
-        </div>
-
-        <div class="rule-divider">⌄</div>
-
-        <div class="rule">
-          <div class="step-number">3</div>
-          <div class="icon-box">
-            <i class="fa-solid fa-check-to-slot"></i>
-          </div>
-          <h3>Vote</h3>
-          <p>Choose your favorite and submit your vote.</p>
-        </div>
-
+    <div class="rule">
+      <div class="rule__step">1</div>
+      <div class="rule__icon">
+        <i class="fa-solid fa-beer-mug-empty"></i>
       </div>
-    </section>
+      <h3>Taste</h3>
+      <p>Taste each beer carefully.</p>
+    </div>
+
+    <div class="rule__connector">
+      <div class="rule__line"></div>
+      <i class="fa-solid fa-chevron-right rule__arrow"></i>
+      <div class="rule__line"></div>
+    </div>
+
+    <div class="rule">
+      <div class="rule__step">2</div>
+      <div class="rule__icon">
+        <i class="fa-solid fa-wine-glass"></i>
+      </div>
+      <h3>Evaluate</h3>
+      <p>Consider aroma, flavor, balance, and overall impression.</p>
+    </div>
+
+    <div class="rule__connector">
+      <div class="rule__line"></div>
+      <i class="fa-solid fa-chevron-right rule__arrow"></i>
+      <div class="rule__line"></div>
+    </div>
+
+    <div class="rule">
+      <div class="rule__step">3</div>
+      <div class="rule__icon">
+        <i class="fa-solid fa-check-to-slot"></i>
+      </div>
+      <h3>Vote</h3>
+      <p>Choose your favorite and submit your vote.</p>
+    </div>
+
+  </div>
+</section>
 
   </div>
 </template>
@@ -232,52 +240,68 @@
 
 .rules-grid {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
 
+/* ── Rule card ── */
 .rule {
   flex: 1;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  background: #fff8ee;
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  border-radius: 14px;
+  padding: 24px 16px 20px;
+  position: relative;
 }
 
-.step-number {
-  width: 40px;
-  height: 40px;
-  background: #c89b3c;
+.rule__step {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: #7e2527;
+  border: 2px solid #fdf6e8;
   border-radius: 50%;
-  color: white;
-  font-weight: 700;
-  font-size: 0.9375rem;
+  color: #f8e7c1;
+  font-size: 0.75rem;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 12px;
 }
 
-.icon-box {
-  width: 60px;
-  height: 60px;
+.rule__icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(126, 37, 39, 0.08);
   border-radius: 50%;
   color: #7e2527;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  margin: 0 auto 14px;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+  font-size: 22px;
+  margin-bottom: 14px;
+  margin-top: 8px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.icon-box:hover {
-  transform: scale(1.1);
-  background: #5c1b1d;
-  color: white;
+.rule:hover .rule__icon {
+  background: #7e2527;
+  color: #f8e7c1;
+  transform: scale(1.08);
 }
 
 .rule h3 {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.9375rem;
+  font-weight: 800;
   color: #2d1508;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -285,16 +309,58 @@
 }
 
 .rule p {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: #4a2e1a;
   line-height: 1.6;
 }
 
-.rule-divider {
-  color: #d7a332;
-  font-size: 2rem;
-  padding-top: 48px;
-  display: none;
+/* ── Connector between cards ── */
+.rule__connector {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+}
+
+.rule__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(200, 155, 60, 0.4);
+}
+
+.rule__arrow {
+  color: #c89b3c;
+  font-size: 0.625rem;
+  padding: 0 2px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .rules-grid {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .rule {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .rule__connector {
+    width: auto;
+    height: 36px;
+    flex-direction: column;
+  }
+
+  .rule__line {
+    width: 1px;
+    height: 100%;
+    flex: 1;
+  }
+
+  .rule__arrow {
+    transform: rotate(90deg);
+  }
 }
 
 /* ── Responsive ── */
@@ -330,18 +396,6 @@
     padding: 24px 20px;
   }
 
-  .rules-grid {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
 
-  .rule-divider {
-    display: block;
-  }
-
-  .rule {
-    width: 100%;
-  }
 }
 </style>

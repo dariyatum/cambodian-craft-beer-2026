@@ -173,11 +173,18 @@ const isMenuOpen = ref(false)
   .hamburger { display: flex; }
   .desktop-vote-btn { display: none; }
   .mobile-vote-btn {
-    display: block;
-    margin-top: 8px;
-    text-align: center;
-    width: 100%;
-  }
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+  color: #f8e7c1 !important; /* Same as desktop */
+}
+.mobile-vote-btn,
+.mobile-vote-btn:visited,
+.mobile-vote-btn:hover,
+.mobile-vote-btn:active {
+  color: #f8e7c1 !important;
+}
 
   .nav-menu {
     position: absolute;

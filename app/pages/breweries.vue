@@ -1,3 +1,4 @@
+
 <template>
   <div class="container">
     <header class="page-header">
@@ -6,6 +7,15 @@
     </header>
 
     <BreweryList />
+      <!-- Back to top -->
+    <button
+      class="back-to-top"
+      :class="{ 'is-visible': showBtn }"
+      @click="scrollToTop"
+      aria-label="Back to top"
+    >
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
   </div>
 </template>
 
@@ -117,7 +127,10 @@ body {
   flex-grow: 1;
   margin-bottom: 28px;
 }
-
+.back-to-top {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
 /* ── Button ── */
 .btn {
   display: block;
@@ -133,7 +146,49 @@ body {
   text-align: center;
   transition: background 0.2s ease, transform 0.15s ease;
 }
+/* ── Back to top ── */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  background: #7e2527;
+  color: #f8e7c1;
+  border: 1px solid rgba(215, 163, 50, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease;
+  pointer-events: none;
+  z-index: 50;
+}
 
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: #5c1b1d;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
 .btn:hover {
   background: #5f1b1d;
   transform: translateY(-1px);
@@ -159,3 +214,19 @@ body {
   }
 }
 </style>
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const showBtn = ref(false)
+
+function onScroll() {
+  showBtn.value = window.scrollY > 300
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+onMounted(() => window.addEventListener('scroll', onScroll))
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
+</script>
