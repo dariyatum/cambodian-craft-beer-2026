@@ -23,7 +23,7 @@
         <EventScheduleItem class="reveal-card" style="--delay: 0ms"   icon="fa-regular fa-clock"       title="Event Begins"                   time="2:00 PM"  />
         <EventScheduleItem class="reveal-card" style="--delay: 80ms"  icon="fa-solid fa-users"         title="Introduction by the MC"         time="3:15 PM"  />
         <EventScheduleItem class="reveal-card" style="--delay: 160ms" icon="fa-solid fa-music"         title="DJ Wha-Wah"                     time="3:30 PM"  />
-        <EventScheduleItem class="reveal-card" style="--delay: 240ms" icon="fa-solid fa-award"         title="Blind Tasting Live Session"     time="6:40 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 240ms" icon="fa-brands fa-hotjar"         title="Blind Tasting Live Session"     time="6:40 PM"  />
         <EventScheduleItem class="reveal-card" style="--delay: 320ms" icon="fa-solid fa-award"         title="Award Ceremony Begins"          time="7:30 PM"  />
         <EventScheduleItem class="reveal-card" style="--delay: 400ms" icon="fa-solid fa-music"         title="Live Music — The Broken Cymbal" time="8:30 PM"  />
         <EventScheduleItem class="reveal-card" style="--delay: 480ms" icon="fa-solid fa-business-time" title="Event Ends"                     time="11:30 PM" />

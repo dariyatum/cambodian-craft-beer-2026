@@ -25,9 +25,9 @@
         <NuxtLink to="/" @click="isMenuOpen = false">Home</NuxtLink>
         <NuxtLink to="/breweries" @click="isMenuOpen = false">Breweries</NuxtLink>
         <NuxtLink to="/schedule" @click="isMenuOpen = false">Schedule</NuxtLink>
-        <NuxtLink to="/beerstyle" @click="isMenuOpen = false">Beer Style</NuxtLink>
-        <NuxtLink to="/award" @click="isMenuOpen = false">Award</NuxtLink>
-        <NuxtLink to="/sponsor" @click="isMenuOpen = false">Sponsor</NuxtLink>
+        <NuxtLink to="/beerstyle" @click="isMenuOpen = false">Beer Styles</NuxtLink>
+        <NuxtLink to="/award" @click="isMenuOpen = false">Awards</NuxtLink>
+        <NuxtLink to="/sponsor" @click="isMenuOpen = false">Sponsors</NuxtLink>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScEjueBWitDWygOZkaHDnkADWIHhYdgZ-lH_u3EvKM2RzL1AA/viewform" class="vote-btn mobile-vote-btn" @click="isMenuOpen = false">Judge Here</a>
       </nav>
 

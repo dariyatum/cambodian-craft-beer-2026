@@ -6,14 +6,6 @@
       <h1 class="beer-page__title">Beer Styles</h1>
       <p class="beer-page__subtitle">A guide to classic ales and lagers across England, Belgium, and Germany</p>
     </div>
-
-    <div class="beer-page__filters reveal" style="--delay: 150ms">
-      <select v-model="selectedCountry" class="filter-input">
-        <option value="">All countries</option>
-        <option v-for="c in countries" :key="c" :value="c">{{ c }}</option>
-      </select>
-    </div>
-
     <div class="beer-list">
       <BeerCard
         v-for="(beer, i) in filteredBeers"
