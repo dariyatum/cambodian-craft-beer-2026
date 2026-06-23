@@ -76,7 +76,7 @@ body {
       rgba(100, 45, 30, 0.92) 0%,
       rgba(195, 130, 90, 0.88) 100%
     ),
-    url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b');
+    url('/background.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
