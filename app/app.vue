@@ -3,10 +3,9 @@
   
     <Header/>
     <NuxtPage />
-
-  </div>
       <NuxtFooter />
-      <NuxtLayout/>
+  </div>
+
 </template>
 
 <style>
