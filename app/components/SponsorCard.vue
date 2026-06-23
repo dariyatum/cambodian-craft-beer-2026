@@ -30,10 +30,9 @@ defineProps({
 }
 
 .sponsor-card img {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
-  margin-bottom: 20px;
 }
 
 .sponsor-card h3 {

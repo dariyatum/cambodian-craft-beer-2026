@@ -1,16 +1,12 @@
 <template>
-
   <div>
-    
+  
+    <Header/>
     <NuxtPage />
 
   </div>
       <NuxtFooter />
-
-  <NuxtLayout/>
-  
-
-
+      <NuxtLayout/>
 </template>
 
 <style>
