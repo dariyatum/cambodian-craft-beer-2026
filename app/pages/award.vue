@@ -1,5 +1,5 @@
 <template>
-  <Header />
+
 
   <div class="award-page">
     <div class="award-page__hero">
@@ -68,9 +68,6 @@
 
     </div>
 
-    <footer class="footer">
-      © CBAC — Cambodian Craft Beer Association &nbsp;·&nbsp; 20 July 2026 &nbsp;·&nbsp; Botanico Craft Beer Garden
-    </footer>
   </div>
 </template>
 
