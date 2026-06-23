@@ -1,0 +1,33 @@
+/* ── Reveal animations (global) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

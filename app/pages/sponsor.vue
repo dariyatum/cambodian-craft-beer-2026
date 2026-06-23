@@ -1,7 +1,7 @@
 <template>
   <div class="sponsors-page">
 
-    <div class="hero">
+    <div class="hero reveal">
       <p class="eyebrow">❦ Cambodia Craft Beer Crown 2026 ❦</p>
       <h1 class="hero__title">Our Sponsors</h1>
       <p class="hero__subtitle">
@@ -18,6 +18,8 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+
 const platinumSponsors = [
   { name: 'Bertie',                 logo: '/images/BERTIE.webp',                  description: 'Official event partner.' },
   { name: 'Botanico',               logo: '/images/botanico.webp',                description: 'Premium beer supplier.' },
@@ -38,6 +40,21 @@ const partnerSponsors = [
   { name: 'Partner 2',              logo: '/images/thai tan.webp',                description: 'Partner description.' },
   { name: 'Partner 3',              logo: '/images/BERTIE.webp',                  description: 'Partner description.' },
 ]
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+})
 </script>
 
 <style scoped>
@@ -83,6 +100,25 @@ const partnerSponsors = [
   color: rgba(248, 231, 193, 0.75);
   line-height: 1.65;
   max-width: 56ch;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 640px) {

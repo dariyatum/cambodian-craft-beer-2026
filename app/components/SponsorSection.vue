@@ -1,17 +1,21 @@
 <template>
-  <div class="sponsor-page">
+  <div class="sponsor-section reveal">
 
-    <div class="sponsor-page__hero">
-      <p class="eyebrow">❦ Cambodia Craft Beer Crown 2026 ❦</p>
-      <h1 class="sponsor-page__title">{{ title }}</h1>
-      <p class="sponsor-page__subtitle">{{ subtitle }}</p>
+    <div class="sponsor-section__header">
+      <div class="sponsor-section__title-block">
+        <span class="sponsor-section__tier-dot" :class="`dot--${tier}`"></span>
+        <h2 class="sponsor-section__title">{{ title }}</h2>
+      </div>
     </div>
 
     <div class="sponsor-grid">
       <SponsorCard
-        v-for="sponsor in sponsors"
+        v-for="(sponsor, i) in sponsors"
         :key="sponsor.name"
         :sponsor="sponsor"
+        :tier="tier"
+        :style="{ '--delay': `${i * 80}ms` }"
+        class="reveal-card"
       />
     </div>
 
@@ -20,59 +24,67 @@
 
 <script setup>
 import SponsorCard from './SponsorCard.vue'
+import { onMounted } from 'vue'
 
 defineProps({
-  title:    { type: String,  default: 'Sponsors' },
-  subtitle: { type: String,  default: 'We thank our generous sponsors who make this event possible.' },
-  sponsors: { type: Array,   required: true, default: () => [] },
+  title:    { type: String, default: 'Sponsors' },
+  sponsors: { type: Array,  required: true, default: () => [] },
+  tier:     { type: String, default: 'partner' },
+})
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08 }
+  )
+  document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el))
 })
 </script>
 
 <style scoped>
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.sponsor-page {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  padding: 64px 24px 80px;
+.sponsor-section {
   max-width: 1080px;
   margin: 0 auto;
+  padding: 0 24px 52px;
 }
 
-.sponsor-page__hero {
-  margin-bottom: 48px;
-  text-align: left;
+.sponsor-section__header {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(200, 155, 60, 0.2);
 }
 
-.eyebrow {
+.sponsor-section__title-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sponsor-section__tier-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot--platinum { background: #c89b3c; }
+.dot--gold     { background: #d7a332; }
+.dot--silver   { background: #8a9ba8; }
+.dot--partner  { background: rgba(248, 231, 193, 0.5); }
+
+.sponsor-section__title {
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: #c89b3c;
-  margin-bottom: 12px;
-}
-
-.sponsor-page__title {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
-  color: #f8e7c1;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  line-height: 1;
-  margin-bottom: 14px;
-}
-
-.sponsor-page__subtitle {
-  font-size: 1rem;
-  color: rgba(248, 231, 193, 0.75);
-  line-height: 1.65;
-  max-width: 56ch;
+  color: rgba(248, 231, 193, 0.6);
 }
 
 .sponsor-grid {
@@ -81,9 +93,42 @@ defineProps({
   gap: 20px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (max-width: 768px) {
-  .sponsor-page {
-    padding: 48px 16px 64px;
+  .sponsor-section {
+    padding: 0 16px 40px;
   }
   .sponsor-grid {
     grid-template-columns: repeat(2, 1fr);

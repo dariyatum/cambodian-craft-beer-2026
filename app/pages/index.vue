@@ -4,12 +4,12 @@
 
   <div class="home-page">
 
-    <div class="passport-banner">
+    <div class="passport-banner reveal">
       <span>🍺 Brewery Passport</span>
       <p>Visit all 11 breweries and discover your favorite beer.</p>
     </div>
 
-    <section class="hero-card">
+    <section class="hero-card reveal" style="--delay: 100ms">
       <div class="hero-content">
         <h1>Cambodian Craft Beer Crown 2026</h1>
         <p>Cambodia's premier craft beer competition — 11 exceptional breweries competing for the crown.</p>
@@ -20,60 +20,79 @@
       </div>
     </section>
 
-    <section class="welcome-card">
+    <section class="welcome-card reveal" style="--delay: 200ms">
       <h2>Welcome!</h2>
       <p>Thank you for being part of Cambodia Craft Beer Crown 2026.</p>
       <p class="event-details">20 July 2026 · 2:00 PM – 11:30 PM · Botanico Craft Beer Garden</p>
     </section>
 
-    <section class="rules-section">
-  <h2>How It Works</h2>
-  <div class="rules-grid">
+    <section class="rules-section reveal" style="--delay: 300ms">
+      <h2>How It Works</h2>
+      <div class="rules-grid">
 
-    <div class="rule">
-      <div class="rule__step">1</div>
-      <div class="rule__icon">
-        <i class="fa-solid fa-beer-mug-empty"></i>
+        <div class="rule reveal-card" style="--delay: 350ms">
+          <div class="rule__step">1</div>
+          <div class="rule__icon">
+            <i class="fa-solid fa-beer-mug-empty"></i>
+          </div>
+          <h3>Taste</h3>
+          <p>Taste each beer carefully.</p>
+        </div>
+
+        <div class="rule__connector">
+          <div class="rule__line"></div>
+          <i class="fa-solid fa-chevron-right rule__arrow"></i>
+          <div class="rule__line"></div>
+        </div>
+
+        <div class="rule reveal-card" style="--delay: 430ms">
+          <div class="rule__step">2</div>
+          <div class="rule__icon">
+            <i class="fa-solid fa-wine-glass"></i>
+          </div>
+          <h3>Evaluate</h3>
+          <p>Consider aroma, flavor, balance, and overall impression.</p>
+        </div>
+
+        <div class="rule__connector">
+          <div class="rule__line"></div>
+          <i class="fa-solid fa-chevron-right rule__arrow"></i>
+          <div class="rule__line"></div>
+        </div>
+
+        <div class="rule reveal-card" style="--delay: 510ms">
+          <div class="rule__step">3</div>
+          <div class="rule__icon">
+            <i class="fa-solid fa-check-to-slot"></i>
+          </div>
+          <h3>Vote</h3>
+          <p>Choose your favorite and submit your vote.</p>
+        </div>
+
       </div>
-      <h3>Taste</h3>
-      <p>Taste each beer carefully.</p>
-    </div>
-
-    <div class="rule__connector">
-      <div class="rule__line"></div>
-      <i class="fa-solid fa-chevron-right rule__arrow"></i>
-      <div class="rule__line"></div>
-    </div>
-
-    <div class="rule">
-      <div class="rule__step">2</div>
-      <div class="rule__icon">
-        <i class="fa-solid fa-wine-glass"></i>
-      </div>
-      <h3>Evaluate</h3>
-      <p>Consider aroma, flavor, balance, and overall impression.</p>
-    </div>
-
-    <div class="rule__connector">
-      <div class="rule__line"></div>
-      <i class="fa-solid fa-chevron-right rule__arrow"></i>
-      <div class="rule__line"></div>
-    </div>
-
-    <div class="rule">
-      <div class="rule__step">3</div>
-      <div class="rule__icon">
-        <i class="fa-solid fa-check-to-slot"></i>
-      </div>
-      <h3>Vote</h3>
-      <p>Choose your favorite and submit your vote.</p>
-    </div>
-
-  </div>
-</section>
+    </section>
 
   </div>
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08 }
+  )
+  document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el))
+})
+</script>
 
 <style scoped>
 *, *::before, *::after {
@@ -92,7 +111,6 @@
   margin: 0 auto;
 }
 
-/* ── Passport Banner ── */
 .passport-banner {
   background: #7e2527;
   border: 1px dashed rgba(215, 163, 50, 0.7);
@@ -115,7 +133,6 @@
   font-size: 0.9375rem;
 }
 
-/* ── Hero ── */
 .hero-card {
   background: rgba(248, 240, 220, 0.95);
   border: 1px solid rgba(200, 155, 60, 0.5);
@@ -192,7 +209,6 @@
   50% { transform: translateY(-10px); }
 }
 
-/* ── Welcome ── */
 .welcome-card {
   background: #fdf6e8;
   border: 1px solid rgba(200, 155, 60, 0.45);
@@ -222,7 +238,6 @@
   font-weight: 500;
 }
 
-/* ── Rules ── */
 .rules-section {
   background: #fdf6e8;
   border: 1px solid rgba(200, 155, 60, 0.45);
@@ -245,7 +260,6 @@
   gap: 0;
 }
 
-/* ── Rule card ── */
 .rule {
   flex: 1;
   max-width: 200px;
@@ -314,7 +328,6 @@
   line-height: 1.6;
 }
 
-/* ── Connector between cards ── */
 .rule__connector {
   display: flex;
   align-items: center;
@@ -334,36 +347,42 @@
   padding: 0 2px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 640px) {
-  .rules-grid {
-    flex-direction: column;
-    gap: 0;
-  }
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease var(--delay, 0ms),
+    transform 0.5s ease var(--delay, 0ms);
+}
 
-  .rule {
-    max-width: 100%;
-    width: 100%;
-  }
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .rule__connector {
-    width: auto;
-    height: 36px;
-    flex-direction: column;
-  }
+.reveal-card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
 
-  .rule__line {
-    width: 1px;
-    height: 100%;
-    flex: 1;
-  }
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .rule__arrow {
-    transform: rotate(90deg);
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
-/* ── Responsive ── */
 @media (max-width: 640px) {
   .home-page {
     padding: 16px 16px 48px;
@@ -396,6 +415,30 @@
     padding: 24px 20px;
   }
 
+  .rules-grid {
+    flex-direction: column;
+    gap: 0;
+  }
 
+  .rule {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .rule__connector {
+    width: auto;
+    height: 36px;
+    flex-direction: column;
+  }
+
+  .rule__line {
+    width: 1px;
+    height: 100%;
+    flex: 1;
+  }
+
+  .rule__arrow {
+    transform: rotate(90deg);
+  }
 }
 </style>

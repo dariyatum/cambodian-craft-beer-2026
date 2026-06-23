@@ -1,8 +1,7 @@
 <template>
-
-
   <div class="award-page">
-    <div class="award-page__hero">
+
+    <div class="award-page__hero reveal">
       <p class="award-page__eyebrow">❦ Cambodia Craft Beer Crown 2026 ❦</p>
       <h1 class="award-page__title">Competition Awards</h1>
       <p class="award-page__subtitle">Three prestigious categories await our winners</p>
@@ -10,8 +9,7 @@
 
     <div class="awards-grid">
 
-      <!-- Main Award -->
-      <div class="award-card">
+      <div class="award-card reveal-card" style="--delay: 0ms">
         <div class="award-card__icon">
           <svg fill="currentColor" viewBox="0 0 24 24">
             <path d="M2 4l3 6 7-6 7 6 3-6v15H2V4zm1 2.22V17h18V6.22l-2.42 4.84-6.58-5.64-6.58 5.64L3 6.22zM4 14h16v1H4v-1z"/>
@@ -38,8 +36,7 @@
         </div>
       </div>
 
-      <!-- People's Choice -->
-      <div class="award-card">
+      <div class="award-card reveal-card" style="--delay: 100ms">
         <div class="award-card__icon">
           <svg fill="currentColor" viewBox="0 0 24 24">
             <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 2 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
@@ -52,8 +49,7 @@
         </p>
       </div>
 
-      <!-- Brewer's Choice -->
-      <div class="award-card">
+      <div class="award-card reveal-card" style="--delay: 200ms">
         <div class="award-card__icon">
           <svg fill="currentColor" viewBox="0 0 24 24">
             <path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.65-.5-.65C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4V8h16v11z"/>
@@ -67,9 +63,27 @@
       </div>
 
     </div>
-
   </div>
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+  document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el))
+})
+</script>
 
 <style scoped>
 *, *::before, *::after {
@@ -87,7 +101,6 @@
   flex-direction: column;
 }
 
-/* ── Hero ── */
 .award-page__hero {
   max-width: 680px;
   margin: 0 auto;
@@ -121,7 +134,6 @@
   line-height: 1.65;
 }
 
-/* ── Grid ── */
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -133,7 +145,6 @@
   flex: 1;
 }
 
-/* ── Card ── */
 .award-card {
   background: #fdf6e8;
   border: 1px solid rgba(200, 155, 60, 0.45);
@@ -194,7 +205,6 @@
   max-width: 28ch;
 }
 
-/* ── Medals ── */
 .medal-row {
   display: flex;
   justify-content: center;
@@ -234,19 +244,40 @@
   color: #4a2e1a;
 }
 
-/* ── Footer ── */
-.footer {
-  background: #7e2527;
-  color: rgba(248, 231, 193, 0.9);
-  border-top: 1px solid rgba(215, 163, 50, 0.4);
-  text-align: center;
-  padding: 18px 24px;
-  font-size: 0.8125rem;
-  letter-spacing: 0.5px;
-  line-height: 1.5;
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* ── Responsive ── */
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (max-width: 640px) {
   .award-page__hero {
     padding: 48px 16px 32px;

@@ -7,6 +7,7 @@
       :logo="brewery.logo"
       :description="brewery.description"
       :facebook="brewery.facebook"
+      :index="index"
     />
   </div>
 </template>

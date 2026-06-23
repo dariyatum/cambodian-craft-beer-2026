@@ -1,13 +1,13 @@
-
 <template>
   <div class="container">
-    <header class="page-header">
+
+    <header class="page-header reveal">
       <h1 class="title">Meet The Brewers</h1>
       <div class="divider">❦ ❦ ❦</div>
     </header>
 
     <BreweryList />
-      <!-- Back to top -->
+
     <button
       class="back-to-top"
       :class="{ 'is-visible': showBtn }"
@@ -16,8 +16,44 @@
     >
       <i class="fa-solid fa-chevron-up"></i>
     </button>
+
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const showBtn = ref(false)
+
+function onScroll() {
+  showBtn.value = window.scrollY > 300
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll)
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08 }
+  )
+  document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el))
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+})
+</script>
 
 <style>
 *, *::before, *::after {
@@ -43,7 +79,6 @@ body {
   min-height: 100vh;
 }
 
-/* ── Layout ── */
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -54,7 +89,6 @@ body {
   margin-bottom: 56px;
 }
 
-/* ── Title ── */
 .title {
   color: #f8e7c1;
   font-size: clamp(2rem, 5vw, 3rem);
@@ -71,14 +105,12 @@ body {
   letter-spacing: 8px;
 }
 
-/* ── Grid ── */
 .brewery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
-/* ── Card ── */
 .brewery-card {
   background: #fdf6e8;
   border: 1px solid rgba(200, 155, 60, 0.45);
@@ -94,7 +126,6 @@ body {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
 }
 
-/* ── Logo ── */
 .b-logo {
   display: flex;
   justify-content: center;
@@ -111,7 +142,6 @@ body {
   padding: 10px;
 }
 
-/* ── Card text ── */
 .brewery-card h3 {
   font-size: 1.125rem;
   font-weight: 700;
@@ -127,11 +157,7 @@ body {
   flex-grow: 1;
   margin-bottom: 28px;
 }
-.back-to-top {
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-/* ── Button ── */
+
 .btn {
   display: block;
   background: #7e2527;
@@ -146,7 +172,47 @@ body {
   text-align: center;
   transition: background 0.2s ease, transform 0.15s ease;
 }
-/* ── Back to top ── */
+
+.btn:hover {
+  background: #5f1b1d;
+  transform: translateY(-1px);
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Back to top */
 .back-to-top {
   position: fixed;
   bottom: 32px;
@@ -181,20 +247,6 @@ body {
   transform: translateY(-2px);
 }
 
-@media (max-width: 640px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-  }
-}
-.btn:hover {
-  background: #5f1b1d;
-  transform: translateY(-1px);
-}
-
-/* ── Responsive ── */
 @media (max-width: 768px) {
   .container {
     padding: 48px 20px 64px;
@@ -213,20 +265,13 @@ body {
     padding: 24px 20px 20px;
   }
 }
+
+@media (max-width: 640px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+}
 </style>
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const showBtn = ref(false)
-
-function onScroll() {
-  showBtn.value = window.scrollY > 300
-}
-
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
-
-onMounted(() => window.addEventListener('scroll', onScroll))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
-</script>

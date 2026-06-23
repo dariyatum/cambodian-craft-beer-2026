@@ -3,8 +3,7 @@
 
   <div class="schedule-page">
 
-    <!-- Hero -->
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero__image">
         <img src="/images/bg-beer.jpg" alt="Event schedule" />
       </div>
@@ -19,21 +18,39 @@
       </div>
     </section>
 
-    <!-- Schedule -->
     <section class="schedule-section">
       <div class="schedule-list">
-        <EventScheduleItem icon="fa-regular fa-clock"        title="Event Begins"                      time="2:00 PM"  />
-        <EventScheduleItem icon="fa-solid fa-users"          title="Introduction by the MC"            time="3:15 PM"  />
-        <EventScheduleItem icon="fa-solid fa-music"          title="DJ Wha-Wah"                        time="3:30 PM"  />
-        <EventScheduleItem icon="fa-solid fa-award"          title="Blind Tasting Live Session"        time="6:40 PM"  />
-        <EventScheduleItem icon="fa-solid fa-award"          title="Award Ceremony Begins"             time="7:30 PM"  />
-        <EventScheduleItem icon="fa-solid fa-music"          title="Live Music — The Broken Cymbal"    time="8:30 PM"  />
-        <EventScheduleItem icon="fa-solid fa-business-time"  title="Event Ends"                        time="11:30 PM" />
+        <EventScheduleItem class="reveal-card" style="--delay: 0ms"   icon="fa-regular fa-clock"       title="Event Begins"                   time="2:00 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 80ms"  icon="fa-solid fa-users"         title="Introduction by the MC"         time="3:15 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 160ms" icon="fa-solid fa-music"         title="DJ Wha-Wah"                     time="3:30 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 240ms" icon="fa-solid fa-award"         title="Blind Tasting Live Session"     time="6:40 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 320ms" icon="fa-solid fa-award"         title="Award Ceremony Begins"          time="7:30 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 400ms" icon="fa-solid fa-music"         title="Live Music — The Broken Cymbal" time="8:30 PM"  />
+        <EventScheduleItem class="reveal-card" style="--delay: 480ms" icon="fa-solid fa-business-time" title="Event Ends"                     time="11:30 PM" />
       </div>
     </section>
 
   </div>
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08 }
+  )
+  document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el))
+})
+</script>
 
 <style scoped>
 *, *::before, *::after {
@@ -51,7 +68,6 @@
   margin: 0 auto;
 }
 
-/* ── Hero ── */
 .hero {
   display: flex;
   align-items: center;
@@ -103,7 +119,6 @@
   line-height: 1.75;
 }
 
-/* ── Schedule ── */
 .schedule-section {
   max-width: 680px;
   margin: 0 auto;
@@ -115,7 +130,40 @@
   gap: 14px;
 }
 
-/* ── Responsive ── */
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 @media (max-width: 768px) {
   .schedule-page {
     padding: 48px 16px 64px;

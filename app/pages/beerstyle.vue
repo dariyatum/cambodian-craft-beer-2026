@@ -1,13 +1,13 @@
 <template>
   <div class="beer-page">
 
-    <div class="beer-page__hero">
+    <div class="beer-page__hero reveal">
       <p class="beer-page__eyebrow">❦ European Brewery ❦</p>
       <h1 class="beer-page__title">Beer Styles</h1>
       <p class="beer-page__subtitle">A guide to classic ales and lagers across England, Belgium, and Germany</p>
     </div>
 
-    <div class="beer-page__filters">
+    <div class="beer-page__filters reveal" style="--delay: 150ms">
       <select v-model="selectedCountry" class="filter-input">
         <option value="">All countries</option>
         <option v-for="c in countries" :key="c" :value="c">{{ c }}</option>
@@ -16,9 +16,11 @@
 
     <div class="beer-list">
       <BeerCard
-        v-for="beer in filteredBeers"
+        v-for="(beer, i) in filteredBeers"
         :key="beer.title"
         v-bind="beer"
+        class="reveal-card"
+        :style="{ '--delay': `${i * 80}ms` }"
       />
       <p v-if="filteredBeers.length === 0" class="no-results">
         No beer styles match your filter.
@@ -29,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const beers = [
   {
@@ -88,6 +90,21 @@ const countries = computed(() => [...new Set(beers.map(b => b.country))])
 const filteredBeers = computed(() =>
   beers.filter(b => !selectedCountry.value || b.country === selectedCountry.value)
 )
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08 }
+  )
+  document.querySelectorAll('.reveal, .reveal-card').forEach(el => observer.observe(el))
+})
 </script>
 
 <style scoped>
@@ -172,6 +189,41 @@ const filteredBeers = computed(() =>
   color: rgba(248, 231, 193, 0.75);
   font-size: 0.9375rem;
   margin-top: 32px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease var(--delay, 0ms),
+    transform 0.5s ease var(--delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease var(--delay, 0ms),
+    transform 0.4s ease var(--delay, 0ms);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 @media (max-width: 640px) {
