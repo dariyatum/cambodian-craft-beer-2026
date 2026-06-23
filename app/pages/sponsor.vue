@@ -114,13 +114,13 @@ const partnerSponsors = [
 
 .hero {
   text-align: center;
-  padding: 80px 20px 40px;
+  padding: 30px 20px 40px;
 }
 
 .hero h1 {
-  font-size: 56px;
+  font-size: 50px;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .hero p {

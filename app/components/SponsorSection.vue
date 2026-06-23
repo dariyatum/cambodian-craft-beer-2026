@@ -41,7 +41,7 @@ defineProps({
 
 .sponsor-section {
   background: #f7f4ee;
-  padding: 80px 20px;
+  padding: 30px 20px;
   font-family: 'Inter', sans-serif;
 }
 
@@ -52,7 +52,7 @@ defineProps({
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 700;
   margin-bottom: 15px;
 }
