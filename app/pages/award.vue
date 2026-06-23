@@ -1,5 +1,6 @@
 <template>
 
+
   <div class="award-page">
     <div class="award-page__hero">
       <p class="award-page__eyebrow">❦ Cambodia Craft Beer Crown 2026 ❦</p>
@@ -67,9 +68,6 @@
 
     </div>
 
-    <footer class="footer">
-      © CBAC — Cambodian Craft Beer Association &nbsp;·&nbsp; 20 July 2026 &nbsp;·&nbsp; Botanico Craft Beer Garden
-    </footer>
   </div>
 </template>
 
