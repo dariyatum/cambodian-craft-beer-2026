@@ -25,7 +25,7 @@
     />
 
     <SponsorSection
-      title="Partners Sponsors"
+      title="Partners"
       :sponsors="partnerSponsors"
     />
   </div>
@@ -114,13 +114,13 @@ const partnerSponsors = [
 
 .hero {
   text-align: center;
-  padding: 30px 20px 40px;
+  padding: 80px 20px 40px;
 }
 
 .hero h1 {
-  font-size: 50px;
+  font-size: 56px;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .hero p {
