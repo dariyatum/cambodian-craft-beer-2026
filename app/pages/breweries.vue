@@ -1,4 +1,6 @@
 <template>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <div class="container">
 
     <header class="page-header reveal">
@@ -8,14 +10,16 @@
 
     <BreweryList />
 
-    <button
-      class="back-to-top"
-      :class="{ 'is-visible': showBtn }"
-      @click="scrollToTop"
-      aria-label="Back to top"
-    >
-      <i class="fa-solid fa-chevron-up"></i>
-    </button>
+<button
+  class="back-to-top"
+  :class="{ 'is-visible': showBtn }"
+  @click="scrollToTop"
+  aria-label="Back to top"
+>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
 
   </div>
 </template>
