@@ -1,132 +1,93 @@
 <template>
   <div class="sponsors-page">
-    <!-- Main Title -->
+
     <div class="hero">
-      <h1>OUR SPONSORS</h1>
-      <p>
-        We thank our generous sponsors who make the Cambodian Craft Beer Crown
-        2025 possible.
+      <p class="eyebrow">❦ Cambodia Craft Beer Crown 2026 ❦</p>
+      <h1 class="hero__title">Our Sponsors</h1>
+      <p class="hero__subtitle">
+        We thank our generous sponsors who make the Cambodian Craft Beer Crown 2026 possible.
       </p>
     </div>
 
-    <SponsorSection
-      title="Platinum Sponsors"
-      :sponsors="platinumSponsors"
-    />
+    <SponsorSection title="Platinum Sponsors" :sponsors="platinumSponsors" tier="platinum" />
+    <SponsorSection title="Gold Sponsors"     :sponsors="goldSponsors"     tier="gold"     />
+    <SponsorSection title="Silver Sponsors"   :sponsors="silverSponsors"   tier="silver"   />
+    <SponsorSection title="Partners"          :sponsors="partnerSponsors"  tier="partner"  />
 
-    <SponsorSection
-      title="Gold Sponsors"
-      :sponsors="goldSponsors"
-    />
-
-    <SponsorSection
-      title="Silver Sponsors"
-      :sponsors="silverSponsors"
-    />
-
-    <SponsorSection
-      title="Partners Sponsors"
-      :sponsors="partnerSponsors"
-    />
   </div>
 </template>
 
 <script setup>
-import SponsorSection from '@/components/SponsorSection.vue'
-
 const platinumSponsors = [
-  {
-    name: 'BERTIE',
-    logo: '/images/BERTIE.webp',
-    description: 'Official event partner.'
-  },
-  {
-    name: 'BOTANICO',
-    logo: '/images/botanico.webp',
-    description: 'Premium beer supplier.'
-  },
-  {
-    name: 'YAKIMA CHIEF',
-    logo: '/images/YAKIMA CHIEF.webp',
-    description: 'Hop supplier.'
-  }
+  { name: 'Bertie',                 logo: '/images/BERTIE.webp',                  description: 'Official event partner.' },
+  { name: 'Botanico',               logo: '/images/botanico.webp',                description: 'Premium beer supplier.' },
+  { name: 'Yakima Chief',           logo: '/images/YAKIMA CHIEF.webp',            description: 'Hop supplier.' },
 ]
-
 const goldSponsors = [
-  {
-    name: 'THAI TAN',
-    logo: '/images/thai tan.webp',
-    description: 'Community supporter.'
-  },
-  {
-    name: 'SKAI TECH',
-    logo: '/images/SKAI_Tech.webp',
-    description: 'Technology partner.'
-  },
-  {
-    name: 'CRAFT BEER ASSOCIATION',
-    logo: '/images/CRAFT BEER ASSOCIATION.webp',
-    description: 'Industry partner.'
-  }
+  { name: 'Thai Tan',               logo: '/images/thai tan.webp',                description: 'Community supporter.' },
+  { name: 'Skai Tech',              logo: '/images/SKAI_Tech.webp',               description: 'Technology partner.' },
+  { name: 'Craft Beer Association', logo: '/images/CRAFT BEER ASSOCIATION.webp',  description: 'Industry partner.' },
 ]
-
 const silverSponsors = [
-  {
-    name: 'Silver Sponsor 1',
-    logo: '/images/BERTIE.webp',
-    description: 'Sponsor description.'
-  },
-  {
-    name: 'Silver Sponsor 2',
-    logo: '/images/botanico.webp',
-    description: 'Sponsor description.'
-  },
-  {
-    name: 'Silver Sponsor 3',
-    logo: '/images/YAKIMA CHIEF.webp',
-    description: 'Sponsor description.'
-  }
+  { name: 'Silver Sponsor 1',       logo: '/images/BERTIE.webp',                  description: 'Sponsor description.' },
+  { name: 'Silver Sponsor 2',       logo: '/images/botanico.webp',                description: 'Sponsor description.' },
+  { name: 'Silver Sponsor 3',       logo: '/images/YAKIMA CHIEF.webp',            description: 'Sponsor description.' },
 ]
-
 const partnerSponsors = [
-  {
-    name: 'Partner 1',
-    logo: '/images/SKAI_Tech.webp',
-    description: 'Partner description.'
-  },
-  {
-    name: 'Partner 2',
-    logo: '/images/thai tan.webp',
-    description: 'Partner description.'
-  },
-  {
-    name: 'Partner 3',
-    logo: '/images/BERTIE.webp',
-    description: 'Partner description.'
-  }
+  { name: 'Partner 1',              logo: '/images/SKAI_Tech.webp',               description: 'Partner description.' },
+  { name: 'Partner 2',              logo: '/images/thai tan.webp',                description: 'Partner description.' },
+  { name: 'Partner 3',              logo: '/images/BERTIE.webp',                  description: 'Partner description.' },
 ]
 </script>
 
 <style scoped>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .sponsors-page {
-  background: #f7f4ee;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .hero {
-  text-align: center;
-  padding: 80px 20px 40px;
-}
-
-.hero h1 {
-  font-size: 56px;
-  font-weight: 800;
-  margin-bottom: 16px;
-}
-
-.hero p {
-  max-width: 700px;
+  max-width: 1080px;
   margin: 0 auto;
-  font-size: 18px;
-  color: #555;
+  padding: 64px 24px 48px;
+  text-align: left;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #c89b3c;
+  margin-bottom: 12px;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: #f8e7c1;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.hero__subtitle {
+  font-size: 1rem;
+  color: rgba(248, 231, 193, 0.75);
+  line-height: 1.65;
+  max-width: 56ch;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 48px 16px 36px;
+  }
 }
 </style>
